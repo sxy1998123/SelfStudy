@@ -1,2 +1,2 @@
 # SelfStudy
-daytime practice
+存放一些练习时写过的代码，以后有经验了再回来慢慢笑话自己（已经开始笑了）
