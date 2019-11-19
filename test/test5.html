@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   <ul id='ul1'>
+     <li>1</li>
+     <li>2</li>
+   </ul>
+   <button id='btn1' >add</button>
+    <script>
+        var OUl = document.getElementById('ul1');
+        var OBtn = document.getElementById('btn1');
+        var add = function(){
+          var OLi = document.createElement('li');
+          OLi.innerHTML = Math.random();
+          OUl.appendChild(OLi);    
+        }
+        OBtn.addEventListener('click',add);
+        OUl.addEventListener('click',function(e){
+             e = window.event || e;
+             console.log(e);
+        })
+        
+    </script>
+</body>
+</html>

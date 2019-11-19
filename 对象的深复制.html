@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         function copy(obj){
+             
+         }
+        var a = [
+            {
+            name:1,
+            age:13,
+            class:{
+                grade:3
+            }
+           },
+           {
+            name:2,
+            age:9,
+            class:{
+                grade:4
+            }
+           }
+        ];
+        // console.log(a);
+        // console.log(b);
+        // var b =JSON.parse(JSON.stringify(a));
+        
+        console.log(a.filter(function(a,index,arr){
+            return a.age > 10;
+        }));
+        // console.log(a)
+        // console.log(b == a);
+        console.log(a instanceof Object);
+    </script>
+</body>
+</html>

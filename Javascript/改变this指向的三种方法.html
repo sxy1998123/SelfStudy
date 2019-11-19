@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     
+      function call_110(){
+            console.log('警察叔叔，我的地址是 '+ this.address + '，请帮帮我');
+      } 
+      function Person(name,age,address){
+          this.name = name;
+          this.age = age;
+          this.address = address;
+          this.call_110 = call_110;
+      }
+       
+      var zs = new Person('zs',14,'黑龙江省哈尔滨市南岗区学府路74号黑龙江大学C区25栋公寓');  
+      var ls = new Person('ls',15,'黑龙江省佳木斯市前进区长安路43号');
+      zs.call_110();
+      ls.call_110();
+      
+      zs.call_110.call(ls);
+      
+      Function.prototype.mycall = function(){
+          
+      }
+    </script>
+</body>
+</html>

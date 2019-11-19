@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id='Btnbox'>
+        <button id='btn1'>create button</button>
+    </div>
+    <script>
+        // 创建按钮
+        var i = 1;
+        var Obtn = document.getElementById('btn1');
+        var Obtnbox = document.getElementById('Btnbox');
+        function appendbutton(e){
+           var nBtn = (function creatButton(){
+             var nBtn = document.createElement('button');
+             var text = document.createTextNode('click' + i);
+             nBtn.appendChild(text);
+             nBtn.arrt = i++;
+             return nBtn;
+            })();
+          Obtnbox.appendChild(nBtn);
+        }
+        
+        Obtn.addEventListener('click',appendbutton,true);
+        Obtnbox.addEventListener('click',function(e){
+            e = e || window.event;
+            var target = e.target;
+            if(target.arrt)
+               console.log(target.arrt)
+        },true);
+    </script>
+</body>
+</html>
+

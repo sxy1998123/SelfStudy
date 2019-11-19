@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       function Person(name,age){
+            this.name = name;
+            this.age = age;
+            this.sayname = function(str1,str2){
+                console.log(this)
+                console.log(str1,str2)
+                console.log(this.name);
+            }
+       }
+       var a = new Person('dzs',14);
+       var d = new Person('dls',15);
+       var b = a.sayname;
+       var bb = d.sayname;
+       
+    //    b.call(a,'1','2');
+    //    b.apply(a,['1','2'])
+    //    b.bind(a)('1','2');
+  
+       Function.prototype.mybind = function(obj){
+            var self = this; //此时this指向调用mybind方法的函数
+            console.log(arguments)
+            return function(){
+                   return self.apply(obj);
+            }
+     }
+       b.mybind(a)('1','2');
+    </script>
+</body>
+</html>

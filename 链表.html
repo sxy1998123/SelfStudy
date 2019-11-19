@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      class Node{
+          constructor(val){
+                  this.val = val;
+                  this.next = null;
+              }
+        }
+      class NodeList{
+           constructor(Node1){
+               switch (arguments.length) {
+                   case 0:{
+                        this.head = null;
+                        this.tail = null;
+                        this.length = 0;
+                        break;
+                    }
+                    case 1:{
+                        // 只有一个参数的情况下只创建拥有单节点的链表
+                        // 若为Node类型则头尾指针指向Node
+                        // 否则将参数视为新节点的val值，新申请空间并插入链表
+                        if(Node1 instanceof Node){
+                        this.add(Node1);
+                        this.length = 1;
+                        }
+                        else{
+                        this.add(new Node(Node1));
+                        } 
+                        break;
+                    }
+                   default:{
+                    //    console.warn('unexpected arguments');
+                       for(var i = 0; i < arguments.length; i++){
+                            this.add(new Node(arguments[i]));
+                       }
+                   }
+                       break;
+                 }
+           }
+           add(Node){
+               if(Node instanceof Object){
+                   if(this.head == null)
+                    { 
+                         this.head = Node;
+                         this.tail = Node;
+                         this.length++;
+                    }  
+                   else {
+                        this.tail.next = Node;
+                        while(this.tail.next != null)
+                        {
+                            this.tail = this.tail.next;
+                        }
+                        this.length++;
+                   }
+                }
+                else 
+                   return 'expected argument is not a Node';
+             return this;
+            }
+        }
+
+      var NL0 = new NodeList();
+      var NL1 = new NodeList(1);
+      var NL2 = new NodeList(5,4,2,5,1);
+      console.log(NL2);
+          </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <script src="jquery-1.12.4.js"></script>
+    <script> 
+       var user_this = $('#input_u').val();
+       var pwd_this = $('#input_p').val();
+       var SendData = {
+           user: user_this,
+           pwd: pwd_this
+       }
+       $.ajax({
+           type:"POST",
+           url:"",
+           contentType:"application/json;charset=utf-8",
+           data:SendData,
+           dataType:"",
+           success: function(messege){
+            console.log(messege);
+           },
+           error: function(){
+            console.log(messege);
+           }
+       }) 
+    </script>
+</head>
+<body>
+        <form id="imgForm">
+                <input type="file">
+                <br>
+                <button type="button" onclick="loadImg()">获取图片</button>
+            </form>
+    <div class="addBorder" id="imgDiv">
+        <img id="imgContent">
+    </div>
+</body>
+</html>

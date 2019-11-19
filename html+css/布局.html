@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+     body{
+         margin:0;
+         padding:0;
+     }
+     #container{
+         position: absolute;
+         left:50%;
+         top:50%;
+         transform: translateX(-50%);
+         transform: translateZ(-50%);
+     }
+     .left{
+         display: inline-block;
+         height: 120px;
+         width: 100px;
+         background: chocolate;
+     }
+     .right{
+         display: inline-block;
+         height:120px;
+         width: 100px;
+         background: sandybrown;
+     }
+     /* 四种水平居中
+        1. table-cell vertical-align:cmiddile;
+        2. position:absolute
+        3. 父级  display:flex;  子元素：justify-content:center;
+        4. margin: 0 auto;
+        
+      */
+    </style>
+</head>
+<body>
+    <div id='container'>
+        <div class='left'></div>
+        <div class='right'></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+	<style>
+	.bcd{/*类选择器，选择所有类名为nav的标签*/
+       	background:#efefef;
+	    list-style:none;/*不使用默认列表样式*/
+		flex-grow:1;/*让这个类的标签占一行*/
+		height:100%;
+		vertical-align: middle;
+	}
+	.abc{
+	    display:flex;/*弹性盒模型所有子元素等比分享父元素的宽度*/
+		width:100%;
+		height:100px;
+		align-items: center;
+	}
+	.r{
+	   margin-left:12px;/*所有元素向左加一个外边距属性12像素*/
+		margin-top:37px;
+	}
+	body,ul{/*标签选择器*/
+	   margin:0;
+	}
+	</style>
+</head>
+<body>
+ <nav class="abc"><!--导航栏-->
+   <ul class="bcd"><!--无序列表，常跟li一起使用。-->  
+      <li class="r">首页</li> <li class="r">图片</li> <li class="r">文章</li>
+   </ul>
+ </nav>
+</body>
+</html>

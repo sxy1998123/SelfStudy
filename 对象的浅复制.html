@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = {
+            val:1,
+            left:{
+                val:2,
+                left:null,
+                right:null
+            },
+            right:{
+                val:3,
+                left:null,
+                right:null
+            }
+        };
+      var copy = (obj) =>{
+          var target = {};
+           Object.assign(target,obj);
+           return target;
+      }
+      var mycopy = (obj) =>{
+          var newobj = {};
+          for(var i in obj){
+              newobj[i] = obj[i];
+          }
+          return newobj;
+      }
+
+      var copy1 = copy(obj);
+      var copy2 = mycopy(obj);
+      obj.vall = 1;
+      obj.left.vall = 1;
+      console.log(copy1);
+      console.log(copy2);
+    //   以上为浅复制，当对象中包含其他对象时，只会复制对象的指针
+    </script>
+</body>
+</html>

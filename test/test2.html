@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font: 13px Helvetica, Arial;
+        }
+        form {
+            background: #000;
+            padding: 3px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        form input {
+            border: 0;
+            padding: 10px;
+            width: 90%;
+            margin-right: .5%;
+        }
+        form button {
+            width: 9%;
+            background: rgb(130, 224, 255);
+            border: none;
+            padding: 10px;
+        }
+        #messages {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        #messages li {
+            padding: 5px 10px;
+        }
+        #messages li:nth-child(odd) {
+            background: #eee;
+        }
+    </style>
+    </head>
+
+    <body>
+        <ul id="messages"></ul>
+        <form action="">
+            <input id="m" autocomplete="off" /><button>Send</button>
+        </form>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+        <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+        <script>
+            $(function () {
+                var socket = io();
+                // on是事件的绑定 emit是事件的触发
+
+                function suiji() {
+                    var a = Math.random() * 100;
+                    var b;
+                    if (a < 50) {
+                        b = 0; //表示有报错的报文
+                    } else {
+                        b = 1; //表示没有报错的报文
+                    }
+                    return b;
+                }
+                var arr; //保留自己已发送的数据的副本（供超时重传使用）
+                function sendmsg() {
+                    // arr=$('#m').val();
+                    var arr1 = []; //发送给客户端的
+                    arr1.push(suiji());
+                    arr1.push(arr);
+                    arr1[0]==1?console.log("报文发送正常"):console.log("报文有报错");
+                    socket.emit('message', arr1);
+                    $('#m').val('');
+                    // return false;
+                }
+                var receive;
+                $('form').submit(function (){
+                    receive=null;
+                    arr=$('#m').val();
+                    var arr1 = []; //发送给客户端的
+                    arr1.push(suiji());
+                    arr1.push($('#m').val());
+                    console.log(arr1[0]);
+                    arr1[0]==1?console.log("报文发送正常"):console.log("报文有报错");
+                    socket.emit('message', arr1);
+                    $('#m').val('');
+
+                    setInterval(function (){if(!receive){
+                      sendmsg();
+                    }},2000);
+                    return false;
+                });
+                
+                socket.on('chat message', function (msg) {
+                    receive=msg;
+                    if(msg){
+                      $('#messages').append($('<li>').text(msg[1]));
+                    //   receive=null;
+                    }
+                    console.log(msg);
+                });
+               
+            });
+        </script>
+
+    </body>
+
+</html>

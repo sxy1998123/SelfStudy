@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<!-- 
+演出站位
+学校校庆排演一个节目，要求同学们站成一高一低交错进行的一列，例如[160,170,165,175,150]，这样的一个序列是完全符合要求的一个站位。
+
+现在，给定一个正整数的学生们的站位序列，老师可以从其中去掉（或不去掉，不能调换）一些学生，得出一列符合交错站位的最长序列，输出其长度。
+输入描述
+输入: 一个正整数数组，数组元素代表学生高度（不考虑符合现实身高的情况，范围（1，MAX））
+输出描述
+输出: 经过老师调整（去掉或不去），符合交错站位的最长长度
+示例1
+输入
+160 170 165 175 150
+输出
+5
+
+ -->
+<body>
+    <script>
+      var string = '';
+
+      string = (function(string){
+           var a = [];
+           for(var i = 0; i < string.length; i++){
+                if(string[i] == 'b'){
+                    if(a[a.length-1]=='a'){
+                        a.pop();
+                    }
+                    else{
+                        a.push(string[i]);
+                    }
+                }
+                else{
+                    a.push(string[i]);
+                }
+           }
+           
+            return a;
+      })(string)
+      console.log(string)
+    </script>
+</body>
+</html>

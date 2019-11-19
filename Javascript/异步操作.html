@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <img src="#" alt="hold on">
+    <script>
+      function Hey1(){
+          var p = new Promise(function(resolve,reject){
+              setTimeout(() => {
+                  if(Math.random() > 0.5){
+                      resolve('Hey you can do');
+                  }
+                  else{
+                      reject('OK don\'t mind');
+                  }
+              }, 1000);
+          })
+          return p;
+      }
+      function Hey2(res){
+          console.log(res)
+          var p = new Promise(function(resolve,reject){
+              setTimeout(() => {
+                  if(Math.random() > 0.5){
+                      resolve('Hey you can do do');
+                  }
+                  else{
+                      reject('OK don\'t mind mind');
+                  }
+              }, 1000);
+          })
+          return p;
+      }
+        Hey1().then(
+            Hey2,
+            Hey2
+        ).then(
+            function(res){
+            console.log(res)
+           },
+            function(rej){
+            console.log(rej)
+        }
+    ); 
+        
+    </script>
+</body>
+</html>

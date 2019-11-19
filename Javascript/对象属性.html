@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 'use strict'
+      var book = {};
+      Object.defineProperties(book,{
+          _year:{
+              value:2004
+          },
+          year:{
+              get:function(){
+                  return this._year;
+              },
+              set:function(newValue){
+                  console.log(newValue);
+                 if(this.newValue > 1000)
+                  this._year = newValue;
+              }
+          }
+      });
+      console.log(book.year);
+      var a = '123';
+      console.log(typeof book.year);
+    </script>
+</body>
+</html>

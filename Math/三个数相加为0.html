@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+    //   var test = [-1,0,1,2,0,4];
+      var test1 = [-4,-2,0,1,1,4,6];
+
+      var result = 0;
+      var lookingfor = [];
+      var sum0 = 0;
+    //   function fordouble(numarr){
+    //       for(var i = 0; i < numarr.length; i++){
+    //              for(var j = i; j < numarr.length; j++){
+    //                    if(j == i) continue;
+    //                    if(numarr[j] + numarr[i] == sum0)
+    //                     {
+    //                         result++;
+    //                     }
+    //              }
+    //       }
+    // }
+    //   for(let i = 0; i < test.length; i++)
+    //   {
+    //         lookingfor.push(test[i]);
+    //         sum0 = 0 - test[i];
+    //          // 从剩下的元素中寻找加和等于sum0的两个数
+    //          var ntest = JSON.parse(JSON.stringify(test));
+    //          ntest.splice(i,1);
+    //          console.log(ntest);
+    //         fordouble(ntest);
+    //         lookingfor.shift();
+    //   }
+         var test = new Set(test1);
+         test = Array.from
+         console.log(test);
+      for(var i = 0; i < test.length; i++)
+      for( var j = i+1; j < test.length; j++)
+      for(var k = j+1; k < test.length; k++){
+          if(test[i]+test[j]+test[k] == 0){
+               result++;
+          }
+      }
+      console.log(result);
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     
+    //   for(let i = 0; i < 10; i++){
+    //       setTimeout(() => {
+    //           console.log(i)
+    //       }, 16);
+    //   }
+    // 以上代码若为var声明的变量，则回调函数中的i会共享一个变量
+    // 若为let，则只在块内有效，无变量提升
+    // function foo(){
+    //     i = 1;
+    //     console.log(i)
+    //     let i = 0;
+    // }
+    // foo();
+    const i = 0;
+    i = 10;
+    console.log(i)
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    var tree = {
+        val:0,
+        lchild:{
+            val:2,
+            lchild:{
+               val:-1,
+               lchild:null,
+               rchild:null
+            },
+            rchild:{
+               val:1,
+               lchild:null,
+               rchild:null
+            }
+        },
+        rchild:{
+             val:3,
+             lchild:{
+                 val:4,
+                 lchild:{
+                     val:0,
+                     lechild:null,
+                     rchild:null
+                 },
+                 rchild:null
+             },
+             rchild:{
+                 val:5,
+                 lchild:{
+                     val:-1,
+                     lchild:null,
+                     rchild:null
+                 },
+                 rchild:null
+             }
+        }
+    }
+     var routes = [];
+     var route = [];
+     var ans = (function search(node,ans){
+         
+         node.visited = true;         
+         route.push(node);
+         console.log(route);
+         routes.push([...route]);
+         console.log(routes);
+         
+         if(node.lchild == null && node.rchild == null){
+             route.pop();
+             if(route[route.length-1].lchild && route[route.length-1].rchild)
+             if(route[route.length-1].lchild.visited && route[route.length-1].rchild.visited)
+             if(node.val!=0)
+               route.pop(); 
+         }
+         
+         if(node.lchild != null) search(node.lchild,ans);
+         if(node.rchild != null) search(node.rchild,ans);
+         return ans;
+      })(tree,tree.val)
+
+    //   console.log(tree);
+    //   console.log(routes);
+    //   console.log(route);
+    //   console.log(ans);
+    </script>
+</body>
+</html>

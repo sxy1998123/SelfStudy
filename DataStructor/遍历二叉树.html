@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>遍历二叉树</title>
+</head>
+<body>
+    <script>
+    let res;
+    let tree = {
+        val:0,
+        lchild:{
+            val:2,
+            lchild:{
+               val:-1,
+               lchild:null,
+               rchild:null
+            },
+            rchild:{
+               val:1,
+               lchild:null,
+               rchild:null
+            }
+        },
+        rchild:{
+             val:3,
+             lchild:{
+                 val:4,
+                 lchild:{
+                     val:0,
+                     lechild:null,
+                     rchild:null
+                 },
+                 rchild:null
+             },
+             rchild:{
+                 val:5,
+                 lchild:{
+                     val:-1,
+                     lchild:null,
+                     rchild:null
+                 },
+                 rchild:null
+             }
+        }
+    }
+    console.log('树是长成这样子滴',tree);
+    //  二叉树的广度优先遍历
+     res = (function BintreeBFS(tree){
+        var result = [];
+         var start = new Date().getTime();
+        //  start = start.getTime();
+         var node = tree;
+         if(!tree){
+             console.error('tree is null')
+             return;
+         }
+         let queue = [];
+         queue.push(node);
+         while(queue.length>0){
+           result.push(queue[0].val);
+            if(node.lchild)
+               queue.push(node.lchild);
+            if(node.rchild)
+               queue.push(node.rchild);
+            queue.shift();
+            if(queue.length)
+            node = queue[0];
+         }
+         var end  = new Date().getTime();
+         console.log('用时'+ (end - start) +'ms');
+         return result;
+     }(tree));
+     console.log(res)
+    //  二叉树的深度优先遍历
+    console.log('开始深度优先遍历，借助队列实现')
+     res  = (function BintreeDFS(tree,type,callback){
+        var result = [];
+        var start = new Date().getTime();
+         function preOrder(node){
+             result.push(node.val);
+             if(node.lchild)
+             arguments.callee(node.lchild);
+             if(node.rchild)
+             arguments.callee(node.rchild);
+         }   
+         function middleOrder(node){
+            
+             if(node.lchild)
+             arguments.callee(node.lchild);
+             result.push(node.val);
+             if(node.rchild)
+             arguments.callee(node.rchild);
+         }   
+         function afterOrder(node){
+            if(node.lchild)
+             arguments.callee(node.lchild);
+             if(node.rchild)
+             arguments.callee(node.rchild);
+             result.push(node.val);
+         }   
+         var types = ['QIAN','ZHONG','HOU'];
+         type = type.toUpperCase();
+         for(var i = 0; i < types.length; i++)
+         {
+             if(type == types[i]){
+                 type = i;
+                 break;
+             }
+         }
+         switch (i) {
+             case 0:
+                 preOrder(tree)
+                 break;
+             case 1:
+                 middleOrder(tree)
+                 break;
+             case 2:
+                 afterOrder(tree)
+                 break;
+             default:
+                 break;
+         }
+         
+        //  计算一下时间吧
+         var end  = new Date().getTime();
+         console.log('用时'+ (end - start) +'ms')
+         return result;
+    })(tree,'hou');
+    console.log(res)
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>aaa</title>
+    <style>
+    #aaa{
+        width: 300px;
+        height: 300px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    </style>
+</head>
+    
+<body>
+        <div id='aaa'>sss</div>
+    <script>
+       var Student = function(num,name){
+           this.num = num;
+           this.name = name;    
+       }
+       Student.prototype.say = function(){
+            console.log('hello');
+       }
+
+       var stu = new Student(1,'cxk');
+       var stu2 = new Student(2,'kaobi');
+
+       var zibistu = {
+           _age : 'secret'
+       };
+
+       Object.defineProperty(zibistu,'age',{
+           get: function(){
+               return this._age;
+           }
+       })
+       console.log(Student);
+       console.log(stu);
+       console.log(zibistu.age);
+    </script>
+</body>
+</html>
