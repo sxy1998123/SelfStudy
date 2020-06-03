@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var body = document.getElementsByTagName('body');
+        // console.log(body)
+        var str = "<script></"+"script>"
+        let a = escape(str);
+        let b = encodeURI(str);
+        console.log(str);
+        console.log(a);
+        console.log(unescape(a));     
+        console.log(b)
+        console.log(decodeURI(b));
+    </script>
+</body>
+</html>

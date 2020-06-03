@@ -6,22 +6,43 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-      .nav{
-        background: #efefef;
-        list-style: none;
-      }
-      nav{
-          
+
+      .site-main{
+        padding: 40px;
+        position: absolute;
+        left: 10px;
+        top:10px;
       }
     </style>
 </head>
 <body>
-    <nav>
-     <ul class='nav'>
-         <li>首页</li>
-         <li>图片</li>
-     </ul>
-    </nav>
-    
+  <div class='site-main'>
+<p>之前一直听说过XSS攻击，简单知道原理，但从来没有亲身经历过，直到前不久在知乎上看到了一个问题 “网站被XSS攻击了，看图，求分析一下？” 原贴地址：<a rel="noopener noreferrer" href="https://www.zhihu.com/question/29562197/answer/44809811" target="_blank">网站被XSS攻击了，看图，求分析一下？</a>，这让我对XSS攻击有了个进一步的认识。</p>
+<p style="text-align:left" class="has-large-font-size">一.简单介绍</p>
+
+<p style="text-align:left"> XSS攻击通常指的是通过利用网页开发时留下的漏洞，通过巧妙的方法注入恶意指令代码到网页，使用户加载并执行攻击者恶意制造的网页程序。这些恶意网页程序通常是JavaScript，但实际上也可以包括Java、 VBScript、ActiveX、 Flash 或者甚至是普通的HTML。攻击成功后，攻击者可能得到包括但不限于更高的权限（如执行一些操作）、私密网页内容、会话和cookie等各种内容。                                   --百度百科</p>
+
+<p>初学者在设计网站的评论功能时，经常这么干：把用户提交的内容当做字符串，不做任何处理，直接嵌入到网页的html代码中，这是一种非常危险的行为。</p>
+
+<p>如果有恶意用户提交了如下评论，这段代码就会被嵌入到访问这个网站的用户得到的每个html文档中，这样的话每个访问页面的人都会看到一句警告框...</p>
+
+<p>如果脚本的内容是获取document.cookie ...等等其他内容，那就非常危险了。</p>
+
+<figure class="wp-block-image is-resized"><img src="http://sxydemo.com/wordpress01/wp-content/uploads/2020/04/XSS-1.jpg" alt="" class="wp-image-102" width="854" height="242"/><figcaption>“危险”的评论</figcaption></figure>
+
+<p>针对本例，可以将用户提交的数据使用 decodeURI() 和 encodeURI()  进行编码和解码。这样用户提交的信息将会被正确的显示在页面上，并不会执行相应的代码。</p>
+
+<p><strong>记住！&lt;script&gt;这个东西很危险！在开发的时候一定要检测！</strong></p>
+
+<p class="has-large-font-size">二.防范方法</p>
+
+<p>1.对用户提交的任何数据都置于不可信数据中，对其中的内容进行编码， 包括对URL、查询关键字、HTTP头、REFER、POST数据等，仅接受指定长度范围内、采用适当格式、采用所预期的字符的内容提交，对其他的一律过滤。 </p>
+
+<p>2. 实现Session 标记（session tokens）、CAPTCHA（验证码）系统或者HTTP引用头检查，以防功能被第三方网站所执行，对于用户提交信息的中的img等link，检查是否有重定向回本站、不是真的图片等可疑操作。 </p>
+
+<p>3.cookie 防盗。避免直接在cookie中泄露用户隐私，例如email、密码，等等；通过使cookie和系统IP绑定来降低cookie泄露后的危险。这样攻击者得到的cookie没有实际价值，很难拿来直接进行重放攻击。 </p>
+
+<p>参考资料：<br>1.<a rel="noopener noreferrer" href="https://www.zhihu.com/question/29562197/answer/44809811" target="_blank">知乎</a><br> 2.<a href="https://baike.baidu.com/item/XSS%E6%94%BB%E5%87%BB/954065" target="_blank" rel="noopener noreferrer">百度百科</a></p>
+</div>
 </body>
 </html>
