@@ -8,35 +8,32 @@
     <script src="jquery.min.js"></script>
     <script src="jquery-1.12.4.js"></script>
     <script> 
-       var user_this = $('#input_u').val();
-       var pwd_this = $('#input_p').val();
+
+      function send() {
        var SendData = {
-           user: user_this,
-           pwd: pwd_this
+           org:111
        }
        $.ajax({
            type:"POST",
-           url:"",
+           url:"http://localhost:8080/datas",
            contentType:"application/json;charset=utf-8",
            data:SendData,
-           dataType:"",
            success: function(messege){
-            console.log(messege);
+            console.log('1' + messege);
            },
-           error: function(){
-            console.log(messege);
+           error: function(messege){
+            console.log('2' + messege);
            }
        }) 
+      }
+       
     </script>
 </head>
 <body>
         <form id="imgForm">
                 <input type="file">
                 <br>
-                <button type="button" onclick="loadImg()">获取图片</button>
+                <button type="button" onclick="send()">发请求</button>
             </form>
-    <div class="addBorder" id="imgDiv">
-        <img id="imgContent">
-    </div>
 </body>
 </html>

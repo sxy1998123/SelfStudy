@@ -18,12 +18,14 @@
     <script>
         (function(){
           var Ali = document.getElementsByTagName('li');
-          for(let i = 0; i < Ali.length; i++){
+          for(var i = 0; i < Ali.length; i++){
+              (function(i){
                 Ali[i].onclick = function(e){
                     console.log(MouseEvent)
                     console.log(i);
                 }
-               }
+              })(i)
+            }
           })();
     </script>
     

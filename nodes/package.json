@@ -1,0 +1,11 @@
+{
+  "name": "sxydemo",
+  "version": "1.0.0",
+  "description": "新建node项目进行练习",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js"
+  },
+  "author": "sxy",
+  "license": "ISC"
+}

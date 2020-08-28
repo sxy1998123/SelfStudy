@@ -10,7 +10,7 @@
     <script>
      
       function call_110(){
-            console.log('警察叔叔，我的地址是 '+ this.address + '，请帮帮我');
+            console.log('警察叔叔，我的地址是 '+ this.address + '，help');
       } 
       function Person(name,age,address){
           this.name = name;
@@ -21,14 +21,19 @@
        
       var zs = new Person('zs',14,'黑龙江省哈尔滨市南岗区学府路74号黑龙江大学C区25栋公寓');  
       var ls = new Person('ls',15,'黑龙江省佳木斯市前进区长安路43号');
-      zs.call_110();
-      ls.call_110();
+    //   zs.call_110();
+    //   ls.call_110();
       
       zs.call_110.call(ls);
       
       Function.prototype.mycall = function(){
-          
+          var self = this;
+          (function(){
+              console.log(self);
+              self(arguments);
+          })(arguments)
       }
+      call_110.mycall();
     </script>
 </body>
 </html>
